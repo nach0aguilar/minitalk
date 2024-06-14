@@ -6,14 +6,14 @@
 /*   By: igaguila <igaguila@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 16:55:31 by igaguila          #+#    #+#             */
-/*   Updated: 2024/05/21 13:31:13 by igaguila         ###   ########.fr       */
+/*   Updated: 2024/06/14 19:41:00 by igaguila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft/libft.h"
-#include "../includes/ft_printf/ft_printf.h"
+#include "ft_printf/ft_printf.h"
 #include <signal.h>
 #include <unistd.h>
+#include <stdio.h>
 
 void text_converter(char *c)
 {

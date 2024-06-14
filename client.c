@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igaguila <igaguila@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 15:23:36 by igaguila          #+#    #+#             */
-/*   Updated: 2024/04/11 16:11:56 by igaguila         ###   ########.fr       */
+/*   Created: 2024/05/20 16:55:19 by igaguila          #+#    #+#             */
+/*   Updated: 2024/06/14 19:40:29 by igaguila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include <signal.h>
+#include <unistd.h>
 
 int	ft_atoi(const char *str)
 {
@@ -36,7 +35,40 @@ int	ft_atoi(const char *str)
 	return ((int)(sign * num));
 }
 
-// int main()
-// {
-//     printf("%d", ft_atoi("-4555"));
-// }
+void binary_converter(char *str, int pid)
+{
+    int i;
+    int base;
+    char letter;
+
+    i = 0;
+    while(str[i])
+    {
+        base = 128;
+        letter = str[i];
+        while (base > 0)
+        {
+            if (letter >= base)
+            {
+                kill(pid, SIGUSR1);
+                letter -= base;
+            }
+            else
+                kill(pid, SIGUSR2);
+            base /= 2;
+        }
+        i++;
+    }
+}
+
+
+int main(int argc, char **argv)
+{
+    int pid;
+    
+    if (argc != 3)
+        return (0);
+    pid = ft_atoi(argv[1]);
+    binary_converter(argv[2], pid);
+    return (0);
+}
