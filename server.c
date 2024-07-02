@@ -6,7 +6,7 @@
 /*   By: igaguila <igaguila@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 16:55:31 by igaguila          #+#    #+#             */
-/*   Updated: 2024/06/27 19:26:19 by igaguila         ###   ########.fr       */
+/*   Updated: 2024/07/02 15:58:16 by igaguila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,52 +15,52 @@
 #include <unistd.h>
 #include <stdio.h>
 
-void text_converter(char *c)
+void	text_converter(char *c)
 {
-    int i;
-    int base;
-    char letter;
+	int		i;
+	int		base;
+	char	letter;
 
-    i = 0;
-    while (i < 8)
-    {
-        base = 128;
-        letter = 0;
-        while (base > 0)
-        {
-            if (c[i] == '1')
-                letter += base;
-            base /= 2;
-            i++;
-        }
-        write(1, &letter, 1);
-    }
+	i = 0;
+	while (i < 8)
+	{
+		base = 128;
+		letter = 0;
+		while (base > 0)
+		{
+			if (c[i] == '1')
+				letter += base;
+			base /= 2;
+			i++;
+		}
+		write(1, &letter, 1);
+	}
 }
 
-void handle_signal(int signal)
+void	handle_signal(int signal)
 {
-    static int i = 0;
-    static char c[8];
+	static int	i = 0;
+	static char	c[8];
 
-    if (signal == SIGUSR1)
-        c[i] = '1';
-    else if (signal == SIGUSR2)
-        c[i] = '0';
-    i++;
-    if (i == 8)
-    {
-        i = 0;
-        text_converter(c);
-    }
+	if (signal == SIGUSR1)
+		c[i] = '1';
+	else if (signal == SIGUSR2)
+		c[i] = '0';
+	i++;
+	if (i == 8)
+	{
+		i = 0;
+		text_converter(c);
+	}
 }
 
-int main()
+int	main(void)
 {
-    getpid();
-    ft_printf("%d\n", getpid());
-    signal(SIGUSR1, handle_signal);
-    signal(SIGUSR2, handle_signal);
-    while (1)
-        sleep(1);
-    return (0);
+	getpid();
+	ft_printf("%d\n", getpid());
+	signal(SIGUSR1, handle_signal);
+	signal(SIGUSR2, handle_signal);
+	while (1)
+		sleep(1);
+	return (0);
 }
