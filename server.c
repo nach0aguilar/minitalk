@@ -6,14 +6,13 @@
 /*   By: igaguila <igaguila@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 16:55:31 by igaguila          #+#    #+#             */
-/*   Updated: 2024/07/02 15:58:16 by igaguila         ###   ########.fr       */
+/*   Updated: 2024/07/02 18:06:28 by igaguila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
 #include <signal.h>
 #include <unistd.h>
-#include <stdio.h>
 
 void	text_converter(char *c)
 {

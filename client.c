@@ -6,7 +6,7 @@
 /*   By: igaguila <igaguila@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 16:55:19 by igaguila          #+#    #+#             */
-/*   Updated: 2024/07/02 15:45:49 by igaguila         ###   ########.fr       */
+/*   Updated: 2024/07/02 18:01:28 by igaguila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	binary_converter(char *str, int pid)
 			else
 				kill(pid, SIGUSR2);
 			base /= 2;
-			usleep(200);
+			usleep(150);
 		}
 		i++;
 	}
